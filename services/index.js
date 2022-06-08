@@ -1,3 +1,4 @@
 module.exports= {
-  UsersService: require("./usersService")
+  UsersService: require("./usersService"),
+  OrdersService: require("./ordersService")
 }

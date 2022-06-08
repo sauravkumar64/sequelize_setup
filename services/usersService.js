@@ -1,3 +1,4 @@
+const { DocumentUsers, UserOrders } = require("../models");
 const Models = require("../models");
 
 Models.Users.belongsTo(Models.Countries, {
@@ -5,9 +6,15 @@ Models.Users.belongsTo(Models.Countries, {
   as: "countries"
 });
 
-Models.Users.hasMany(Models.UserDocuments, {
-  foreignKey: "userId"
-});
+// Models.Users.hasMany(Models.UserDocuments, {
+//   foreignKey: "userId"
+// });
+
+Models.Users.belongsToMany(Models.UserDocuments, { through: DocumentUsers });
+Models.UserDocuments.belongsToMany(Models.Users, { through: DocumentUsers });
+
+Models.Users.belongsToMany(Models.Orders, { through: UserOrders });
+Models.Orders.belongsToMany(Models.Users, { through: UserOrders });
 
 exports.getUsers = (criteria, projection, limit, offset) => {
   console.log(criteria);
@@ -23,6 +30,10 @@ exports.getUsers = (criteria, projection, limit, offset) => {
         },
         {
           model: Models.UserDocuments,
+          required: false
+        },
+        {
+          model: Models.Orders,
           required: false
         }
       ]

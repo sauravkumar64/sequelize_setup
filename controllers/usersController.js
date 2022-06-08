@@ -4,7 +4,7 @@ module.exports = {
     let criteria = {
       // email: data.email
     };
-    let projection = ["name", "city"];
+    let projection = ["id", "name", "city"];
     let users = await Services.UsersService.getUsers(criteria, projection, data.limit || 10, data.skip || 0);
     return users;
   },

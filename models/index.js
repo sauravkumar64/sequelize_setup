@@ -1,5 +1,8 @@
 module.exports = {
-  Users: require("./users"),
   Countries: require("./countries"),
-  UserDocuments: require("./userDocuments")
+  DocumentUsers: require("./documentUsers"),
+  UserDocuments: require("./userDocuments"),
+  UserOrders: require("./userOrders"),
+  Users: require("./users"),
+  Orders: require("./orders")
 }

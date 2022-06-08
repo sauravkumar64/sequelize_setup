@@ -13,7 +13,7 @@ var sequelize = new Sequelize(
 var connect = () => {
   sequelize.authenticate()
     .then(() => {
-      sequelize.sync({alter: true});
+      sequelize.sync();
       console.log("Connected Successfully")
     })
     .catch((err) => {
